@@ -34,12 +34,21 @@ const MORSE_TABLE = {
     '--...':  '7',
     '---..':  '8',
     '----.':  '9',
-    '-----':  '0',
+	'-----':  '0',
+	' ': ' ',
 };
 
 function decode(expr) {
-    // write your solution here
+    const arr = [];
+    for (let i = 0; i < expr.length; i += 10) {
+        arr.push(MORSE_TABLE[expr.slice(i, i + 10).replace(/00/g, "")
+                .replace(/11/g, "-").replace(/10/g, ".")
+                .replace(/\*\*\*\*\*\*\*\*\*\*/, " ")]);
+    }
+
+    return arr.join("");// write your solution here
 }
+
 
 module.exports = {
     decode
